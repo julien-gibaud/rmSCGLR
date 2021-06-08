@@ -1,0 +1,27 @@
+Package: rmSCGLR
+Title: Response Mixture Supervised Component-based Linear Regression
+Version: 1.0
+Authors@R: 
+    person(given = "Julien",
+           family = "Gibaud",
+           role = c("aut", "cre"),
+           email = "julien.gibaud@umontpellier.fr")
+Description: An extension of the Supervised Component-based Linear Regression to
+             combine the search for supervised components with mixture model on the responses.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr
+Imports: 
+    stats,
+    Formula,
+    ClustOfVar,
+    pls,
+    grid,
+    cowplot,
+    ggplot2
