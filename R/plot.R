@@ -28,7 +28,7 @@ if(getRversion()>="2.15.1") {
 #' ny <- n[grep("^gen",n)]
 #' nx <- n[-grep("^gen",n)]
 #' na <- c("geology")
-#' nx <- nx[!nx%in%c("geology", "surface", "forest")]
+#' nx <- nx[!nx%in%c("geology", "surface")]
 #'
 #' # build multivariate formula
 #' form <- multivariateFormula(Y = ny, X = nx, A = na)
@@ -43,7 +43,7 @@ if(getRversion()>="2.15.1") {
 #'                            family=fam, method=met, offset = data$surface)
 #'
 #' # plot the results
-#' plot_RMSCGLR(x=res, thresold=0.5, group=3, plan=c(1,2))
+#' plot_RMSCGLR(x=res, thresold=0.5, group=1, plan=c(1,2))
 #' }
 #'
 plot_RMSCGLR <- function(x, thresold=0, group=1, plan=c(1,2), lin.pred=FALSE){

@@ -75,7 +75,7 @@ n <- names(data)
 ny <- n[grep("^gen",n)]
 nx <- n[-grep("^gen",n)]
 na <- c("geology")
-nx <- nx[!nx\%in\%c("geology", "surface", "forest")]
+nx <- nx[!nx\%in\%c("geology", "surface")]
 
 # build multivariate formula
 form <- multivariateFormula(Y = ny, X = nx, A = na)
