@@ -196,7 +196,7 @@ for(i in 1:20){ # gaussian
 for(i in 21:70){ # poisson
   eta <- psi2.sim*gamma.sim[i]*0.25+psi5.sim*gamma.sim1[i]*0.25
   mu <- exp(eta)
-  Y <- cbind(Y, rpois(n=N, lambda=mu)+1)
+  Y <- cbind(Y, rpois(n=N, lambda=mu))
 }
 # third group
 for(i in 71:100){ # bernoulli
