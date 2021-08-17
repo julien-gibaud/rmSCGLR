@@ -45,7 +45,7 @@ plot_RMSCGLR(x=res, thresold=0.5, group=1, plan=c(1,2))
 ```
 
 ## Simulations from the paper
-
+### Simulation 1
 ```r
 library(rmSCGLR)
 library(mvtnorm)
@@ -146,5 +146,5 @@ res.scglrRM$postProbs
 res.scglrRM$cluster
 # the supervised components
 res.scglrRM$comp
-
 ```
+### Simulation 2
