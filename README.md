@@ -66,7 +66,7 @@ PSI.sim <- rmvnorm(N, mean = rep(0, 2), sigma = Gamma)
 psi1.sim <- PSI.sim[,1]   # first latent variable
 psi2.sim <- PSI.sim[,2]   # second latent variable
 psi3.sim <- rnorm(n = N)  # third latent variable
-psi4.sim <- rnorm(n = N)  # forth latent variable
+psi4.sim <- rnorm(n = N)  # fourth latent variable
 
 #**********************************#
 # create the regression parameters #
@@ -170,7 +170,7 @@ psi1.sim <- PSI.sim[,1]  # first latent variable
 psi3.sim <- PSI.sim[,2]  # third latent variable
 psi5.sim <- PSI.sim[,3]  # fifth latent variable
 psi2.sim <- rnorm(n = N) # second latent variable
-psi4.sim <- rnorm(n = N) # forth latent varieble
+psi4.sim <- rnorm(n = N) # fourth latent varieble
 
 #**********************************#
 # create the regression parameters #
