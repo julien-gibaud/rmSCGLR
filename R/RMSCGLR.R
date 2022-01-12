@@ -422,7 +422,7 @@ EM.RMSCGLR <- function(Y, A, Z, W, eta, pg, H, FF, family,
   tol <- rep(Inf, G)
   sol <- list()
 
-  while(any(c(pg.dif, tol)>crit$tol) && (step < crit$maxit)){
+  while(step < 10){
     #**********#
     # step E   #----
     #**********#
@@ -430,7 +430,7 @@ EM.RMSCGLR <- function(Y, A, Z, W, eta, pg, H, FF, family,
     for(g in 1:G){
       if ("gaussian" %in% family){
         postProbs[family == "gaussian",g] <- log(pg[g])+
-          apply(-log(2*pi)/2-(Y[,family == "gaussian"]-eta.old[[g]][,family == "gaussian"])^2/2,2,sum)
+          apply(dnorm(Y[,family == "gaussian"], eta.old[[g]][,family == "gaussian"], log = TRUE),2,sum)
       }
       if ("poisson" %in% family) {
         if (is.null(offset)) {
@@ -439,22 +439,24 @@ EM.RMSCGLR <- function(Y, A, Z, W, eta, pg, H, FF, family,
           mu <- exp(eta.old[[g]][, family == "poisson"] + loffset)
         }
         postProbs[family == "poisson",g] <- log(pg[g])+
-          apply(cbind(Y[,family == "poisson"]*log(mu)-mu-lfactorial(Y[,family == "poisson"])),
-                2,sum)
+          apply(dpois(Y[,family == "poisson"], mu, log = TRUE),2,sum)
       }
       if ("bernoulli" %in% family) {
         mu <- exp(eta.old[[g]][, family == "bernoulli"])/(1 + exp(eta.old[[g]][, family == "bernoulli"]))
         postProbs[family == "bernoulli",g] <- log(pg[g])+
-          apply(Y[,family == "bernoulli"]*log(mu)+(1-Y[,family == "bernoulli"])*log(1-mu),2,sum)
+          apply(dbinom(Y[,family == "bernoulli"], 1, mu, log = TRUE),2,sum)
       }
       if ("binomial" %in% family) {
         mu <- exp(eta.old[[g]][, family == "binomial"])/(1 + exp(eta.old[[g]][, family == "binomial"]))
         postProbs[family == "binomial",g] <- log(pg[g])+log(factorial(size))-
-          log(factorial(Y[,family == "binomial"]))-log(factorial(size-Y[,family == "binomial"]))+
-          apply(Y[,family == "binomial"]*log(mu)+(1-Y[,family == "binomial"])*log(1-mu),2,sum)
+          apply(dbinom(Y[,family == "binomial"], size, mu, log = TRUE),2,sum)
       }
     }
     postProbs <- exp(postProbs - apply(postProbs, 1, sumlogs))+1e-100
+    if(step < 5){
+      alpha <- (1-0.8*G)/(0.8*(2-G)-1)
+      postProbs <- (2*alpha*postProbs-alpha+1)/(2*alpha-alpha*G+G)
+    }
 
     #**********#
     # step M   #----
@@ -527,9 +529,8 @@ EM.RMSCGLR <- function(Y, A, Z, W, eta, pg, H, FF, family,
 
     pg.dif <- abs(pg.old-pg.new)
     pg.old <- pg.new
-    # print(tol)
     step <- step+1
   } # end loop EM
-  # print(step)
+
   return(list(pg=pg.old, postProbs=postProbs, W=W, eta=eta.new, Z=Z, sol=sol))
 }
