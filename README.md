@@ -98,7 +98,7 @@ for(i in 71:80){ # gaussian
   Y <- cbind(Y, rnorm(n=N, mean=mu, sd=sqrt(1)))
 }
 for(i in 81:100){ # bernoulli
-  eta <- psi2.sim*gamma.sim[i]*0.2+psi4.sim*gamma.sim1[i]*0.2
+  eta <- psi2.sim*gamma.sim[i]+psi4.sim*gamma.sim1[i]
   mu <- exp(eta)/(1+exp(eta))
   Y <- cbind(Y, rbinom(n=N, size=1, prob=mu))
 }
