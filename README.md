@@ -253,8 +253,12 @@ res.scglrRM$comp
 
 ## References
 
+<div id="refs" class="references csl-bib-body hanging-indent">
+
 <div id="ref-gibaud2022" class="csl-entry">
   
 Gibaud J., Trottier C., Mortier F., Réjou-Méchain M. and Bry X., ``Clustering floristic taxa: Response mixture models based on supervised components'', *to be submitted soon*
 
+</div>
+  
 </div>
