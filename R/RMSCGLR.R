@@ -2,7 +2,7 @@
 #'
 #' @import ClustOfVar
 #' @import pls
-#' @importFrom stats rnorm
+#' @importFrom stats rnorm dnorm dpois dbinom
 #' @param formula an object of class \code{MultivariateFormula} (or one that can be coerced to that class): a symbolic description of the model to be fitted.
 #' @param data a data frame to be modeled.
 #' @param H a vector of interger representing the number of components per group
@@ -216,8 +216,8 @@ ResponseMixtureSCGLR <- function(formula, data, H=c(2,2), family, size = NULL,
 
   # initialisation des groupes
   quanti <- apply(Y, 2, FUN = function(x) x <- x+rnorm(n=length(x), sd=0.01))
-  tree <- hclustvar(X.quanti = quanti)
-  clusters <- cutreevar(obj = tree, k = G)$cluster
+  tree <- ClustOfVar::hclustvar(X.quanti = quanti)
+  clusters <- ClustOfVar::cutreevar(obj = tree, k = G)$cluster
   clusters <- clusters[Y_vars]
   rm(tree)
 
@@ -226,7 +226,7 @@ ResponseMixtureSCGLR <- function(formula, data, H=c(2,2), family, size = NULL,
   FF <- list()
   for(g in 1:G){
     ind <- which(clusters == g)
-    U[[g]] <- cbind(plsr(formula = Z[[g]][,ind]~X, ncomp = H[g])$loading.weights)
+    U[[g]] <- cbind(pls::plsr(formula = Z[[g]][,ind]~X, ncomp = H[g])$loading.weights)
     FF[[g]] <- cbind(X%*%U[[g]])
   }
   # initialisation des eta[[g]]

@@ -3,7 +3,7 @@
 #' @param m a vector
 #'
 #' @return the result of sumlogs
-#' @export
+
 #'
 #' @examples \dontrun{
 #' library(rmSCGLR)

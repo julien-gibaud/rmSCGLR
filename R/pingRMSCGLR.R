@@ -11,7 +11,7 @@
 #' @param E set of components
 #'
 #' @return the updated loading vectors
-#' @export
+#'
 #'
 
 ping.RMSCGLR <- function(Z,X,AX,W,F,u,method,poids,E) {

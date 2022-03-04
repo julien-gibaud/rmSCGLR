@@ -1,7 +1,7 @@
 #' @title Auxiliary function for controlling SCGLR fitting
 #' @description Auxiliary function for \code{scglr} fitting used to
 #' construct a convergence control argument.
-#' @export
+#'
 #' @param tol positive convergence threshold.
 #' @param maxit integer, maximum number of iterations.
 #' @return a list containing elements named as the arguments.
