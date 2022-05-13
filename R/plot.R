@@ -17,7 +17,7 @@ if(getRversion()>="2.15.1") {
 #' @return an object of class \code{\link{ggplot2}}
 #'
 #' @examples \dontrun{
-#' library(rmSCGLR)
+#'
 #'
 #' # load sample data
 #' data <- genus

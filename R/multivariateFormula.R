@@ -188,9 +188,7 @@ multivariateFormula <- function(Y, X=NULL, ..., A=NULL, additional=NULL, data=NU
 #' @param a attribute
 #' @description
 #' S3 helper function to retrieve attributes as if it was named values
-#' @examples
-#' frm <- multivariateFormula(y~x+z)
-#' print(frm$Y)
+
 '$.MultivariateFormula' <- function(f,a) {
   attr(f,a,exact = TRUE)
 }

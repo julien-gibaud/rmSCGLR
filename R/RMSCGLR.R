@@ -14,6 +14,7 @@
 #' @param crit a list of two elements : maxit and tol, describing respectively the maximum number of iterations and
 #' the tolerance convergence criterion for the Expectation Maximization algorithm. Default is set to 50 and 10e-6 respectively.
 #' @param method structural relevance criterion. Object of class "method.RMSCGLR"
+#' @param ClustInit gives the initialization of the cluster. "ClustOfVar" is used for partition output by ClustOfVar method, and "random" for a random partition of the responses.
 #'
 #' @return \item{U}{the set of loading vectors}
 #' @return \item{comp}{the set of components}
@@ -56,9 +57,10 @@
 #' }
 #'
 
-ResponseMixtureSCGLR <- function(formula, data, H=c(2,2), family, size = NULL,
+ResponseMixtureSCGLR <- function(formula, data, H = c(2,2), family, size = NULL,
                                  offset = NULL, subset = NULL,
-                                 crit = list(), method = methodSR.RMSCGLR()){
+                                 crit = list(), method = methodSR.RMSCGLR(),
+                                 ClustInit = "ClustOfVar"){
 
   if(!inherits(formula,"MultivariateFormula"))
     formula <- multivariateFormula(formula,data=data)
@@ -215,11 +217,16 @@ ResponseMixtureSCGLR <- function(formula, data, H=c(2,2), family, size = NULL,
 
 
   # initialisation des groupes
-  quanti <- apply(Y, 2, FUN = function(x) x <- x+rnorm(n=length(x), sd=0.01))
-  tree <- ClustOfVar::hclustvar(X.quanti = quanti)
-  clusters <- ClustOfVar::cutreevar(obj = tree, k = G)$cluster
-  clusters <- clusters[Y_vars]
-  rm(tree)
+  if(ClustInit == "ClustOfVar"){
+    quanti <- apply(Y, 2, FUN = function(x) x <- x+rnorm(n=length(x), sd=0.01))
+    tree <- ClustOfVar::hclustvar(X.quanti = quanti)
+    clusters <- ClustOfVar::cutreevar(obj = tree, k = G)$cluster
+    clusters <- clusters[Y_vars]
+    rm(tree)
+  }
+  if(ClustInit == "random"){
+    clusters <- sample(x = 1:G, size = K, replace = TRUE)
+  }
 
   #initialisation des u et f
   U <- list()

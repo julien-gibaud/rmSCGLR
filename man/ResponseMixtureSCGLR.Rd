@@ -13,7 +13,8 @@ ResponseMixtureSCGLR(
   offset = NULL,
   subset = NULL,
   crit = list(),
-  method = methodSR.RMSCGLR()
+  method = methodSR.RMSCGLR(),
+  ClustInit = "ClustOfVar"
 )
 }
 \arguments{
@@ -36,6 +37,8 @@ ResponseMixtureSCGLR(
 the tolerance convergence criterion for the Expectation Maximization algorithm. Default is set to 50 and 10e-6 respectively.}
 
 \item{method}{structural relevance criterion. Object of class "method.RMSCGLR"}
+
+\item{ClustInit}{gives the initialization of the cluster. "ClustOfVar" is used for partition output by ClustOfVar method, and "random" for a random partition of the responses.}
 }
 \value{
 \item{U}{the set of loading vectors}

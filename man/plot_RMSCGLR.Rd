@@ -25,7 +25,7 @@ rmSCGLR generic plot
 }
 \examples{
 \dontrun{
-library(rmSCGLR)
+
 
 # load sample data
 data <- genus

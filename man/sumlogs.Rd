@@ -17,7 +17,7 @@ Function that computes sumlogs
 }
 \examples{
 \dontrun{
-library(rmSCGLR)
+
 
 sumlogs(c(1,2,3))
 
