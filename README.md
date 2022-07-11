@@ -258,7 +258,9 @@ res.scglrRM$comp
 If you use this package, please cite
 
 <div id="ref-gibaud22" class="csl-entry"> 
+
 Gibaud J., Bry X., Trottier C., Mortier F. and Réjou-Méchain M., (2022), ``Response mixture models based on supervised components: Clustering floristic taxa'', *Statistical Modelling*
+
 </div>
   
 </div>
