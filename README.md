@@ -44,7 +44,7 @@ res$cluster
 plot_RMSCGLR(x=res, thresold=0.5, group=1, plan=c(1,2))
 ```
 
-## Simulations from the paper ([Gibaud et al. 2022](#ref-gibaud22))
+## Simulations from the paper ([Gibaud et al. 2024](#ref-gibaud22))
 ### Simulation 1
 ```r
 library(rmSCGLR)
