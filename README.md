@@ -259,7 +259,7 @@ If you use this package, please cite
 
 <div id="ref-gibaud22" class="csl-entry"> 
 
-Gibaud J., Bry X., Trottier C., Mortier F. and Réjou-Méchain M., (2022), ``Response mixture models based on supervised components: Clustering floristic taxa'', *Statistical Modelling*
+Gibaud J, Bry X, Trottier C, Mortier F, Réjou-Méchain M. Response mixture models based on supervised components: Clustering floristic taxa. *Statistical Modelling*. 2024;24(3):226-244. doi:10.1177/1471082X221115525
 
 </div>
   
